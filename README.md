@@ -1,10 +1,11 @@
 # JSON Path Remover
 
-A Python utility for removing specific paths from JSON files using fuzzy path matching.
+A Python utility for removing specific paths from JSON files using fuzzy path matching and endpoint targeting.
 
 ## Features
 
 - Remove nested paths from JSON files
+- Find and remove entries pointing to specific files/endpoints
 - Fuzzy path matching for easy path selection
 - Support for both objects and arrays in JSON structure
 - Interactive selection when multiple matches are found
@@ -26,7 +27,7 @@ python json_path_remover.py
 
 Follow the prompts:
 1. Enter the path to your JSON file
-2. Enter a partial path to search for
+2. Enter a file/endpoint to find (e.g., sound.xml)
 3. Select the matching path if multiple are found
 4. Confirm the removal
 
@@ -34,12 +35,15 @@ Follow the prompts:
 
 ```bash
 Enter the path to your JSON file: data.json
-Enter the partial path to remove: settings/user
+Enter the file/endpoint to find (e.g. sound.xml): sound.xml
 
-Found path: settings/user/preferences
-Remove this path? (y/n): y
+Multiple matching paths found:
+1. resources/audio/background -> /assets/sound.xml
+2. resources/audio/effects/explosion -> /other/path/sound.xml
 
-Successfully removed path: settings/user/preferences
+Enter the number of the path to remove: 1
+
+Successfully removed path: resources/audio/background -> /assets/sound.xml
 ```
 
 ## Requirements
